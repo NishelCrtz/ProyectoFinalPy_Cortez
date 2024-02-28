@@ -5,7 +5,8 @@ Café de Luna es un proyecto de Python funcional que posibilita la creación, ed
 * /home/: Página de inicio del sitio web.
 * /info/: Página de información general sobre el café.
 * /sobre_mi/: Página que presenta información sobre el desarrollador del sitio.
-Agregar y Eliminar Items al Carrito
+* 
+# Agregar y Eliminar Items al Carrito
 * /cart/: Página que muestra el contenido del carrito de compras.
 * /agregar_al_carrito/bebida/int:id_bebida/: Función para agregar una bebida específica al carrito.
 * /eliminar_del_carrito/bebida/int:id_bebida/: Función para eliminar una bebida específica del carrito.
