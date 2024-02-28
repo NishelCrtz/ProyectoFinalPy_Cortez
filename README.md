@@ -32,7 +32,8 @@ Café de Luna es un proyecto de Python funcional que posibilita la creación, ed
 * /buscar_articulos/: Función para buscar artículos.
 * /editar_producto/int:pk/: Página para editar un producto de merchandising existente.
 * /borrar_producto/int:pk/: Función para eliminar un producto de merchandising existente.
-Reseñas de Asociados
+* 
+# Reseñas de Asociados
 * /luna_asociados/: Página que muestra la lista de asociados de Café de Luna.
 * /asociados/: Página para calificar a los asociados y dejar reseñas.
 * /editar_asociados/int:pk/: Página para editar la información de un asociado existente.
