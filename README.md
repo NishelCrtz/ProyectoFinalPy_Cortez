@@ -5,6 +5,7 @@ Café de Luna es un proyecto de Python funcional que posibilita la creación, ed
 * Postre
 * Bebida
 * Merch
+* Carrito
 * Asociado
 * Cliente Frecuente
 * Avatar
