@@ -1,0 +1,68 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+<div class="register-container text-center">
+    <h1 class="display-4 fw-bolder">Confirmar eliminación</h1>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <b><p>¿Estás seguro de que deseas eliminar {{ postre.nombre}} de tu menú de postres?</p></b>
+        {{ form.as_p }}
+        <button class="btn btn-danger" type="submit">Confirmar eliminación</button>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url("{% static 'assets/postres_banner.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 20px;
+        padding-top:5px;
+        border-radius: 10px;
+        width:25%;
+        margin:auto;
+        
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+    .register-container {
+        width: 100%;
+        text-align: left; 
+        margin-top: 20px; 
+        padding-bottom:55px;
+    }
+    
+    .register-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom:-10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); 
+    }
+
+</style>
+{% endblock %}

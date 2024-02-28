@@ -1,0 +1,132 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+<header class="py-5 bg-image-full" style="background-image: url('{% static 'assets/merch_banner.jpg' %}')">
+    <div class="text-center my-5">
+        <h1 class="display-4 fw-bolder" style="color: white !important;">Tu carrito de compras</h1>
+    </div>
+</header>
+
+<div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+    <div class="col-lg-6"><div class="container px-5 my-5" >
+                
+        <div class="container">
+            {% for bebida_en_carrito in bebidas_en_carrito %}
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="background-color: #FFFFFFC7;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{% static 'assets/bebida_en_carrito.jpg' %}" style="height:100%; width:100%;" alt="Producto" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{ bebida_en_carrito.bebida.nombre }}</h5>
+                                    <p class="card-text">{{ bebida_en_carrito.bebida.descripcion }}</p>
+                                    <p class="card-text"><strong>$ {{ bebida_en_carrito.precio_actual }}</strong></p>
+                                    <div class="d-flex justify-content-between">
+                                        <b><p>Cantidad: {{ bebida_en_carrito.cantidad }}</p></b>
+                                        <a href="{% url 'eliminar_bebida_del_carrito' bebida_en_carrito.bebida.id %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+            
+            {% for postre_en_carrito in postres_en_carrito %}
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="background-color: #FFFFFFC7;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{% static 'assets/postre_en_carrito.jpg' %}" style="height:100%; width:100%;" alt="Producto" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{ postre_en_carrito.postre.nombre }}</h5>
+                                    <p class="card-text">{{ postre_en_carrito.postre.descripcion }}</p>
+                                    <p class="card-text"><strong>$ {{ postre_en_carrito.precio_actual }}</strong></p>
+                                    <div class="d-flex justify-content-between">
+                                        <b><p>Cantidad: {{ postre_en_carrito.cantidad }}</p></b>
+                                        <a href="{% url 'eliminar_postre_del_carrito' postre_en_carrito.postre.id %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+            
+            {% for merch_item in merch_en_carrito %}
+            
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="background-color: #FFFFFFC7;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{% static 'assets/merch_en_carrito.webp' %}" style="height:100%; width:100%;" alt="Producto" class="img-fluid">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{ merch_item.merch.nombre }}</h5>
+                                    <p class="card-text">{{ merch_item.merch.descripcion }}</p>
+                                    <p class="card-text"><strong>$ {{ merch_item.precio_actual }}</strong></p>
+                                    <div class="d-flex justify-content-between">
+                                        <b><p>Cantidad: {{ merch_item.cantidad }}</p></b>
+                                        <a href="{% url 'eliminar_merch_del_carrito' merch_item.merch.id %}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+            <div class="row">
+                <br>
+                <b><hr></b>
+                <div class="col">
+                    <div class="card">
+                        <div class="row g-0">
+            
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">Compra de {{user.username}}</h5>
+                                    
+                                    
+                                    <div class="d-flex justify-content-end" style="margin-right:-200px;"><b><p>Total de compra: </p></b></div>
+                                    <div class="d-flex justify-content-end" style="margin-right:-200px;"><b><p>${{ total_compra }}</p></b></div>
+                                    <div class="d-flex justify-content-end" style="margin-right:-200px;">
+                                        <br>
+                                        <div class="text-end" style="margin-right:0 !important;">
+                                            <hr>
+                                            {% if total_compra > 0 %}
+                                            <a href="{% url 'confirmar_compra' %}" class="btn btn-danger">Confirmar compra</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="py-5 bg-image-full" style="background-image: url('{% static 'assets/producto_banner.jpg' %}')">
+    <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+    <div style="height: 20rem"></div>
+</div>
+
+{% endblock contenido %}

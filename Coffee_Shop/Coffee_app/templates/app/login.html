@@ -1,0 +1,63 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+
+<div class="login-container">
+    <h1 class="display-4 fw-bolder">Inicio de sesión</h1>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <b><br>{{ form.as_p }}</b>
+        
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Iniciar Sesión</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url(" https://www.wfla.com/wp-content/uploads/sites/71/2023/08/GettyImages-1467199060.jpg?strip=1");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    .footer-container {
+        position: fixed; 
+        width: 100%; 
+        bottom: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    .login-container {
+        text-align: center; 
+        margin-top: 20px; 
+    }
+    .login-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); 
+    }
+    
+</style>
+{% endblock %}

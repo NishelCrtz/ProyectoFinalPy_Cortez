@@ -1,0 +1,105 @@
+{% extends 'app/home.html' %}
+
+
+{% block contenido %}
+{% load static %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">¿Quiénes somos?</h1>
+                        <h2 class="text-white-50 mx-auto mt-2 mb-5">¡Bienvenidos a Café de Luna!</h2>
+                        <a class="btn btn-primary" href="{% url 'registro' %}">Regístrate como cliente frecuente</a>
+                        <br>
+                        <br>
+                        <a class="btn btn-primary" href="{% url 'luna_asociados' %}">Nuestro equipo</a>
+                        <br>
+                        <br>
+                        <a class="btn btn-primary" href="{% url 'buscar_cuentas' %}">Busca tu cuenta de cliente frecuente</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="about-section text-center" id="about">
+            
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        
+                        <h2 class="text-white mb-4">Construido con amor y un poco de café</h2>
+                        <p class="text-white-50">
+                            En Café de Luna, nos esforzamos por ofrecer una experiencia única a cada cliente. Nuestro equipo está comprometido con la excelencia y la calidad en todo lo que hacemos. ¡Te invitamos a ser parte de nuestra familia!
+                        </p>
+                        
+                    </div>
+                </div>
+                
+                <img class="img-fluid" src="{% static 'assets/info1.jpg' %}" alt="..." />
+                <br>
+                <br>
+                <br>
+            </div>
+        </section>
+
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+     
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/info2.jpg' %}" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>Inspiración</h4>
+                            <p class="text-black-50 mb-0">En Café de Luna, nos inspiramos en la belleza de la naturaleza y la simplicidad de la vida cotidiana. Ven y descubre un lugar donde cada detalle cuenta una historia.</p>
+                        </div>
+                    </div>
+                </div>
+       
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="https://img.freepik.com/premium-photo/cup-coffee-sits-table-cafe_192217-786.jpg" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">Esencia</h4>
+                                    <p class="mb-0 text-white-50">En cada taza de café de Café de Luna, encontrarás una combinación perfecta de sabor, aroma y calidad. Ven y disfruta de la experiencia de un café auténtico.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row gx-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?cs=srgb&dl=pexels-emre-can-acer-2079438.jpg&fm=jpg" alt="..." /></div>
+                    <div class="col-lg-6 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">Nuestros clientes</h4>
+                                    <p class="mb-0 text-white-50">En Café de Luna, cada cliente es especial para nosotros. Ven y descubre un lugar donde te sentirás bienvenido y apreciado en cada visita.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer bg-black small text-center text-white-50">
+            <h3 class="fw-bolder">Acerca del desarrollador</h3>
+            <div class="container px-4 px-lg-5"><h4 class="fw-bolder"><a href="{% url 'sobre_mi' %}" class="nav-link nav-item about-me-link">Sobre mí</a></h4></div>
+        </footer>
+    </body>
+    <style>
+        .about-me-link {
+            transition: color 0.3s; 
+        }
+        
+        .about-me-link:hover {
+            color: #E3DBDBDE; /* Cambia el color del texto al pasar el mouse por encima */
+        }
+    </style>
+</html>
+
+{% endblock contenido %}

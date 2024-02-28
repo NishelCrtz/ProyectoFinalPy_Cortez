@@ -1,0 +1,119 @@
+{% extends 'app/home.html' %}
+
+
+{% block contenido %}
+{% load static %}
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <li><a class="dropdown-item" href="{% url 'buscar' %}">Bebidas</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'buscar2' %}">Postres</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'buscar3' %}">Merch</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a href="{% url 'cart' %}" class="btn btn-outline-dark" role="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart 
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header-->
+        <header class="bg-dark py-5" style="background-image: url('{% static 'assets/postres_banner.jpg' %}'); background-size: cover; background-position: center;">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Postres</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                
+                {% for postre in postres %}
+                    
+                
+                    
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="{% static 'assets/postre.jpg' %}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{postre.nombre}}</h5>
+                                    <!-- Product price-->
+                                    
+                                    
+                                    {{postre.descripcion}}
+                                    <br>
+                                    <br>
+                                    
+                                    <b><p>$ {{postre.precio}}</p></b>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <form action="{% url 'agregar_postre_al_carrito' postre.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-dark mt-auto">Añadir</button>
+                                    </form>
+                                    {% if user.is_authenticated and user.is_superuser %}
+                                    <br>
+                                    <div class="text-end">
+                                        <a href="{% url 'editar_postre' postre.id %}" class="edit opinions-team" style="color:#942b04; padding:10px;"><i class="fa-solid fa-pencil"></i></i></a>
+                                        <a href="{% url 'borrar_postre' postre.id %}" class="edit opinions-team" style="color:#942b04;"><i class="fa-solid fa-x"></i></a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="mx-auto my-0 text-uppercase" style="font-weight:700 !important">¿Alguna sugerencia?</h1>
+                    <br>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5" style="color:black !important">Añade tu postre favorito y déjanos sorprenderte el día de mañana</h2>
+                    <a class="btn btn-primary" href="{% url 'crear_postre' %}">Crear postre</a>
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    </body>
+
+
+{% endblock contenido %}

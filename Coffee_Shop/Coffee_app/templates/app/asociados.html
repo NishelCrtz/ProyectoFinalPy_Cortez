@@ -1,0 +1,86 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+
+<div class="register-container text-center">
+    <h1 class="display-4 fw-bolder">Calificación de asociados</h1>
+    <br>
+    <b><p class="text-white-50">¡Ayúdanos a servirte mejor! Evalúa a nuestros asociados y forma parte de la mejora continua de Luna Café.</p></b>
+    <br>
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <b><label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre:</label></b>
+            <br>
+            {{ form.nombre }}
+        </div>
+        <div class="form-group">
+            <b><label for="{{ form.puesto.id_for_label }}" class="form-label">Puesto:</label></b>
+            <br>
+            {{ form.puesto }}
+        </div>
+        <div class="form-group">
+            <b><label for="{{ form.calificacion.id_for_label }}" class="form-label">Calificación:</label></b>
+            <br>
+            {{ form.calificacion }}
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url("https://tinybeans.com/wp-content/uploads/2020/05/pouring-coffee-design-barista-cc-tyler-nix-unsplash.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        padding-top:5px;
+        border-radius: 10px;
+        
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+    .register-container {
+        width: 100%;
+        text-align: left; 
+        margin-top: 20px; 
+        padding-bottom:55px;
+    }
+    
+    .register-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom:-10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); 
+    }
+
+</style>
+{% endblock %}
+
+

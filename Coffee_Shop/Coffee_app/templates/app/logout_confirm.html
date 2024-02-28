@@ -1,0 +1,32 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">¿Estás seguro de cerrar sesión?</h1>
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'home' %}" class="btn btn-primary">Regresar a casa</a>
+                    <button type="submit" class="btn btn-primary" id="logout">Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+
+{% endblock %}

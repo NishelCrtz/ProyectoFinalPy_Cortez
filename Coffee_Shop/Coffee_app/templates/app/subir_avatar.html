@@ -1,0 +1,95 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+
+<div class="register-container text-center">
+    
+    
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-grid">
+            <div class="profile-image-container"> <!-- Contenedor de la imagen de perfil -->
+                <img class="img-fluid rounded-circle mb-4" src="{{ request.session.avatar }}" alt="" />
+            </div>
+            <b><br>{{ form.as_p }}</b>
+            <button class="btn btn-primary btn-lg" type="submit" value="Subir Avatar">Guardar</button>
+           <br>
+            <a href="{% url 'home' %}" class="btn btn-danger">Regresar a casa</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url(" https://img.freepik.com/premium-photo/hot-black-coffee-white-marble-cup-paste-reflected-black-glass-floor_44271-56.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.7);
+        margin-top:55px;
+        padding: 20px;
+        padding-top: 5px;
+        border-radius: 14px;
+        width:500px;
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+    .register-container {
+
+        width: 400px;
+        text-align: left; 
+        margin-top: 20px; 
+        padding-bottom:55px;
+    }
+    
+    .register-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom:-10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); 
+
+    }
+    .profile-image-container {
+        padding-top:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .avatar:hover{
+        color: #6E6D6D;
+    }
+    img {
+        height:150px !important;
+        width:150px !important;
+    }
+
+    a{
+        padding:10px;
+    }
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+<div class="register-container">
+    <h1 class="display-4 fw-bolder">Editar información de perfil</h1>
+    <br>
+    <form action="" method="post">
+        <br>
+        {% csrf_token %}
+        <b><br>{{ form.as_p }}</b>
+
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url("https://images6.alphacoders.com/107/1072624.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 25px;
+        padding-top:5px;
+        border-radius: 10px;
+        height:350px;
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+    .register-container {
+        width: 95%%;
+        text-align: left; 
+        margin-top: 20px; 
+        padding-bottom:55px;
+    }
+    
+    .register-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom:-10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); /* Añade un brillo blanco */
+    }
+
+</style>
+{% endblock %}

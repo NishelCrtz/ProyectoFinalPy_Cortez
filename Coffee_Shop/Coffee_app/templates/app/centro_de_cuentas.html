@@ -1,0 +1,63 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+<header class="py-5 bg-image-full" style="background-image: url('https://png.pngtree.com/background/20230412/original/pngtree-coffee-cup-percolator-coffee-maker-americano-picture-image_2393746.jpg')">
+    <div class="text-center my-5">
+        <h1 class="display-4 fw-bolder" style="color: white !important;">Clientes</h1>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th style="text-align: right; padding-right:60px;">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.nombre }}</td>
+                            <td style="text-align: right; align-items:center; ">
+                                {% if cliente.email == user.email %}
+                                    <a href="{% url 'editar_cuenta' cliente.id %}" class="btn-link text-decoration-none" style="color:#942b04; font-size:15px; padding:30px;"><i class="fa-solid fa-user-pen"></i></a>
+                                {% endif %}
+                                {% if cliente.email == user.email or user.is_superuser %}
+                                <a href="{% url 'borrar_cuenta' cliente.id %}" class="btn-link text-decoration-none" style="color:#942b04; font-size:15px; padding:40px;"><i class="fa-solid fa-trash"></i></a>
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</section>
+<div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <h1 class="mx-auto my-0 text-uppercase" style="font-weight:700 !important">¿No encuentras tu cuenta?</h1>
+            <br>
+            <p>Recuerda buscar tu cuenta por <b>email,</b> de esta manera solo tú podrás reconocerla y editarla.</p>
+            <br>
+            <a class="btn btn-primary" href="{% url 'registro' %}">Crear cuenta de cliente</a>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="py-5 bg-image-full" style="background-image: url('https://images.squarespace-cdn.com/content/v1/6464ebf4c3d19f15b89802a0/f34d2a54-74cc-4a0d-8efe-06052daad65c/LMN01415-3.jpg')">
+    <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+    <div style="height: 20rem"></div>
+</div>
+
+{% endblock contenido %}

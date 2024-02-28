@@ -1,0 +1,38 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bolder" style="color: white !important;">Has cerrado sesión exitosamente</h1>
+    <h1 class="display-4 fw-bolder" style="color: white !important;">¡Esperamos verte pronto!</h1>
+</div>
+
+<style>
+    body {
+        background-image: url(" https://www.wfla.com/wp-content/uploads/sites/71/2023/08/GettyImages-1467199060.jpg?strip=1");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    .footer-container {
+        position: fixed; 
+        width: 100%; 
+        bottom: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    
+</style>
+{% endblock %}

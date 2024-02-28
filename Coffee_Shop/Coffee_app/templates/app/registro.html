@@ -1,0 +1,74 @@
+
+
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+<div class="register-container text-center">
+    <h1 class="display-4 fw-bolder">Clientes frecuentes</h1>
+    <br>
+    <br>
+    <form action="" method="post" class="text-start">
+        <h3 class="text-white fs-3 fw-bolder" style="color: black !important;">¡Regístrate como cliente frecuente y no te pierdas de ninguna promoción!</h3>
+        <b><p class="mb-0 ">Cada cliente es especial. Al registrarte como cliente frecuente, podrás disfrutar de promociones exclusivas diseñadas pensando en ti. Valoramos tu preferencia y queremos hacer tu experiencia con nosotros aún más especial.</p></b>
+
+        {% csrf_token %}
+        <b><br>{{ form.as_p }}</b>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg" type="submit">Crear cuenta</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    body {
+        background-image: url("https://images.squarespace-cdn.com/content/v1/6464ebf4c3d19f15b89802a0/f34d2a54-74cc-4a0d-8efe-06052daad65c/LMN01415-3.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        padding-top:5px;
+        border-radius: 10px;
+  
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+    .register-container {
+        width: 50%;
+        text-align: left; 
+        margin-top: 20px; 
+        padding-bottom:55px;
+    }
+    
+    .register-container h1 {
+        color:white;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom:-10px;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5); /* Añade un brillo blanco */
+    }
+
+</style>
+
+{% endblock %}

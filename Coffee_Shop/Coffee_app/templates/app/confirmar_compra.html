@@ -1,0 +1,42 @@
+{% extends 'app/home.html' %}
+
+{% block contenido %}
+{% load static %}
+
+
+<div class="text-center my-5">
+    <h1 class="display-4 fw-bolder" style="color: white !important;">¡Compra exitosa!</h1>
+    <p class="text-white-50 mb-0" style="font-weight:700; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);">Tu pedido llegará muy pronto, {{user.username}}</p>
+    <p class="text-white-50 mb-0" style="font-weight:700; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);">Enviaremos un correo de confirmación a {{user.email}}</p>
+    <br>
+    <p class="text-white-50 mb-0" style="font-weight:700; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);">¡Esperamos verte pronto otra vez!</p>
+</div>
+
+<style>
+    body {
+        background-image: url(" https://www.wfla.com/wp-content/uploads/sites/71/2023/08/GettyImages-1467199060.jpg?strip=1");
+        background-size: cover;
+        background-position: center;
+        height: 100vh; 
+        margin: 0; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+    .nav-container {
+        position: fixed; 
+        width: 100%; 
+        top: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    .footer-container {
+        position: fixed; 
+        width: 100%; 
+        bottom: 0; 
+        background-color: rgba(0, 0, 0, 0.8); 
+        z-index: 1000; 
+    }
+    
+</style>
+{% endblock %}

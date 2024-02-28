@@ -1,0 +1,41 @@
+{% extends 'app/home.html' %}
+
+
+{% block contenido %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br>
+            <h2 class="text-center" style="font-weight:800; color:white;">Buscar postres</h2>
+            <br>
+            <form action="/buscar_postres" method="get" data-sb-form-api-token="API_TOKEN">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="buscar" placeholder="Buscar postres..." style="border-radius: 46px 46px 46px 46px;
+                    -webkit-border-radius: 46px 46px 46px 46px;
+                    -moz-border-radius: 46px 46px 46px 46px; margin-right:20px;">
+                    <br>
+                    <button class="btn btn-primary" type="submit" value="Buscar" style="border-radius: 10px !important; height: 40px; padding: 10px 20px;">Buscar</button>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    body{
+        background-image: url("{% static 'assets/postres_banner.jpg' %}");
+        background-size: cover;
+
+    }
+    .footer-container {
+        height:40px;
+        position: absolute; 
+        width: 100%; 
+        bottom: 0 !important; 
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+</style>
+{% endblock %}

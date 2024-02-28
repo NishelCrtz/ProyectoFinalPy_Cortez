@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Home</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/productos_styles.css' %}" rel="stylesheet" />
+
+        <link href="{% static 'css/info_styles.css' %}" rel="stylesheet" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Raleway:ital,wght@0,100;0,200;0,800;0,900;1,200;1,300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            body{
+                font-family: 'Raleway', sans-serif;
+                background-color: #CDC19A;
+            }
+            nav{
+                font-weight: bold;
+                background-color: black !important;
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .navbar-brand{
+                font-family: 'Nanum Pen Script', cursive;
+                font-size: 40px;
+            }
+            .navbar{
+                background-color:black;
+            }
+            .rounded-circle{
+                width:150px;
+                height:150px;
+                object-fit: cover;
+            }
+        </style>
+        <!-- Responsive navbar-->
+    <div class="nav-container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">Luna <i class="fa-solid fa-moon"></i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a></li>
+                        
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'bebidas' %}">Bebidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'postres' %}">Postres</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'merch' %}">Merch</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'info' %}">Sobre nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Perfil</a></li>
+                        
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registrarse' %}">Registro</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+        
+        {% block contenido %}
+            
+        
+        <header class="py-5 bg-image-full" style="background-image: url('{% static 'assets\home_banner.jpg' %}')">
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-4" src="{{ request.session.avatar }}" alt="" />
+                <h1 class="text-white fs-3 fw-bolder">Te damos la bienvenida</h1>
+                
+                {% if user.is_authenticated %}
+                <h1 class="text-white fs-3 fw-bolder">{{user.username}}</h1> 
+                <br>
+                <br>
+                <br>
+                {% endif %} 
+                <br>
+                <p class="text-white-50 mb-0" style="font-weight:700; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);">Un refugio acogedor para los amantes del café, donde cada taza cuenta una historia...</p>
+            </div>
+        </header>
+       
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Experiencias Únicas</h2>
+                        <p class="lead">Te invitamos a sumergirte en un ambiente cálido y lleno de historia, donde cada sorbo es un viaje hacia la inspiración.</p>
+                        <p class="mb-0">En Café de Luna, nos esforzamos por crear momentos memorables para ti y tus seres queridos. Desde nuestro delicioso café hasta nuestros exquisitos postres, cada detalle está diseñado para deleitar tus sentidos y hacer que te sientas como en casa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+        <div class="py-5 bg-image-full" style="background-image: url('{% static 'assets/section_home.jpg' %}')">
+            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+            <div style="height: 20rem"></div>
+        </div>
+       
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Historias por Descubrir</h2>
+                        <p class="lead">En cada rincón de Café de Luna, encontrarás una historia por descubrir y un momento para recordar.</p>
+                        <p class="mb-0">Nuestro equipo se enorgullece de ofrecerte una experiencia única, donde la pasión por el café se combina con la calidez de un hogar. Desde nuestro equipo de baristas hasta nuestro ambiente acogedor, todo está pensado para que te sientas bienvenido y querido.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="py-5 bg-image-full" style="background-image: url('{% static 'assets/footer_home.jpg' %}')">
+       
+            <div style="height: 20rem"></div>
+        </div>
+
+
+        {% endblock contenido %}
+    
+      
+    <div class="footer-container">
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Café de Luna 2024</p></div>
+        </footer>
+    </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/888a47ab32.js" crossorigin="anonymous"></script>
+        
+        <script src="{% static 'js/productos_scripts.js' %}"></script>
+        <script src="{% static 'js/info_scripts.js' %}"></script>
+        
+
+    </body>
+</html>

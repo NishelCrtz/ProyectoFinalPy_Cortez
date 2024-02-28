@@ -1,0 +1,107 @@
+{% extends 'app/home.html' %}
+
+
+{% block contenido %}
+{% load static %}
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buscar</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <li><a class="dropdown-item" href="{% url 'buscar' %}">Bebidas</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'buscar2' %}">Postres</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="{% url 'buscar3' %}">Merch</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a href="{% url 'cart' %}" class="btn btn-outline-dark" role="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart 
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5" style="background-image: url('{% static 'assets/merch_banner.jpg' %}'); background-size: cover; background-position: center;">
+            <!-- Título del encabezado -->
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Nuestra Mercancía Oficial</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Sección de productos -->
+        <section class="py-5">
+            <!-- Contenedor de productos -->
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <!-- Iteración sobre los productos -->
+                    {% for articulo in merch %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Imagen del producto -->
+                            <img class="card-img-top" src="https://www.usatoday.com/gcdn/-mm-/5c8bf163d61d56de560dacb3f845b9116f1adc6e/c=118-0-2003-1414/local/-/media/2021/03/16/USATODAY/usatsports/MotleyFool-TMOT-6ce98652-steaming-coffee-cup.jpg" alt="..." />
+                            <!-- Detalles del producto -->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Nombre del producto -->
+                                    <h5 class="fw-bolder">{{articulo.nombre}}</h5>
+                                    <!-- Descripción del producto -->
+                                    {{articulo.descripcion}}
+                                    <br>
+                                    <br>
+                                    <!-- Precio del producto -->
+                                    <b><p>$ {{articulo.precio}}</p></b>
+                                </div>
+                            </div>
+                            <!-- Acciones del producto -->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <form action="{% url 'agregar_merch_al_carrito' articulo.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-dark mt-auto">Añadir</button>
+                                    </form>
+                                    {% if user.is_authenticated and user.is_superuser %}
+                                    <br>
+                                    <div class="text-end">
+                                        <a href="{% url 'editar_producto' articulo.id %}" class="edit opinions-team" style="color:#942b04; padding:10px;"><i class="fa-solid fa-pencil"></i></i></a>
+                                        <a href="{% url 'borrar_producto' articulo.id %}" class="edit opinions-team" style="color:#942b04;"><i class="fa-solid fa-x"></i></a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Sección de sugerencias -->
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <!-- Título de la sección de sugerencias -->
+                    <h1 class="mx-auto my-0 text-uppercase" style="font-weight:700 !important">¿Alguna sugerencia?</h1>
+                    <br>
+                    <!-- Descripción de la sección de sugerencias -->
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5" style="color:black !important">Añade algo que quieras ver en nuestra Merch Oficial y déjanos sorprenderte el día de mañana</h2>
+                    <!-- Botón para crear un nuevo producto -->
+                    <a class="btn btn-primary" href="{% url 'crear_producto' %}">Crear producto</a>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    {% endblock contenido %}
