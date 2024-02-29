@@ -1,9 +1,12 @@
 # ProyectoFinalPy_Cortez
 Café de Luna es un proyecto de Python funcional que posibilita la creación, edición y compra de productos, así como la creación de cuenta de usuario en la misma.
+* Video: https://drive.google.com/file/d/1OsFN94qKrhhdMfkRQxsPJ1COIGT0xwgy/view?usp=sharing
+* Carpeta Drive: https://drive.google.com/drive/folders/1maJmRQxlaEkhgkPZng85sRvrignTwRQ6?usp=sharing
 
 * Cuenta de staff: MyAdmin
-* Contraseña: lunacafeteria123
 * email: administrator@gmail.com
+* Contraseña: lunacafeteria123
+
 
 # Modelos:
 * Postre
