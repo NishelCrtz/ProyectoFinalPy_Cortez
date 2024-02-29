@@ -82,7 +82,9 @@
         
         <header class="py-5 bg-image-full" style="background-image: url('{% static 'assets\home_banner.jpg' %}')">
             <div class="text-center my-5">
+                {% if user.is_authenticated %}
                 <img class="img-fluid rounded-circle mb-4" src="{{ request.session.avatar }}" alt="" />
+                {% endif %}
                 <h1 class="text-white fs-3 fw-bolder">Te damos la bienvenida</h1>
                 
                 {% if user.is_authenticated %}
